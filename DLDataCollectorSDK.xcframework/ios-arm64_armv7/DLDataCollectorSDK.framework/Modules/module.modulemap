@@ -1,0 +1,4 @@
+framework module DLDataCollectorSDK {
+  header "DLDataCollectorSDK-Swift.h"
+  requires objc
+}

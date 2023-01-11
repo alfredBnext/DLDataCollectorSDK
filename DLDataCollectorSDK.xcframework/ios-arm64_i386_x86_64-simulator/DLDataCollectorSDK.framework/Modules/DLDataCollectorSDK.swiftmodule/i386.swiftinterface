@@ -1,0 +1,73 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-module-flags: -target i386-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name DLDataCollectorSDK
+import CFNetwork
+import CoreLocation
+import Foundation
+import LocalAuthentication
+import MessageUI
+import Security
+import Swift
+import UIKit
+import WebKit
+import _Concurrency
+public struct DLAdditionalData : Swift.Encodable {
+  public init(userReference: Swift.String?)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public enum DLLogLevel {
+  case silent
+  case verbose
+  public static func == (a: DLDataCollectorSDK.DLLogLevel, b: DLDataCollectorSDK.DLLogLevel) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum DLEnvironment : Swift.Int, Swift.RawRepresentable, Swift.CustomDebugStringConvertible, Swift.CaseIterable {
+  case production
+  case sandbox
+  public var debugDescription: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [DLDataCollectorSDK.DLEnvironment]
+  public typealias RawValue = Swift.Int
+  public static var allCases: [DLDataCollectorSDK.DLEnvironment] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class DLCollector {
+  public static let shared: DLDataCollectorSDK.DLCollector
+  public func setUp(_ settings: DLDataCollectorSDK.DLSettings)
+  public func startSession(additionalData: DLDataCollectorSDK.DLAdditionalData? = nil) throws
+  public func getSessionId() -> Swift.String?
+  @objc deinit
+}
+public enum DLCollectorError : Swift.Error {
+  case calledBeforeSetup
+  case setupCalledTwice
+  public static func == (a: DLDataCollectorSDK.DLCollectorError, b: DLDataCollectorSDK.DLCollectorError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension DLDataCollectorSDK.DLCollectorError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public struct DLSettings : Swift.Equatable {
+  public init(apiKey: Swift.String, env: DLDataCollectorSDK.DLEnvironment = .production, logLevel: DLDataCollectorSDK.DLLogLevel = .silent)
+  public static func == (a: DLDataCollectorSDK.DLSettings, b: DLDataCollectorSDK.DLSettings) -> Swift.Bool
+}
+extension DLDataCollectorSDK.DLLogLevel : Swift.Equatable {}
+extension DLDataCollectorSDK.DLLogLevel : Swift.Hashable {}
+extension DLDataCollectorSDK.DLEnvironment : Swift.Equatable {}
+extension DLDataCollectorSDK.DLEnvironment : Swift.Hashable {}
+extension DLDataCollectorSDK.DLCollectorError : Swift.Equatable {}
+extension DLDataCollectorSDK.DLCollectorError : Swift.Hashable {}
